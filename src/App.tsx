@@ -2,11 +2,6 @@ import { Moon, Sun } from "phosphor-react"
 import { useEffect, useState } from "react"
 
 function App() {
-
-  useEffect(() => {
-    document.body.classList.add('duration-1000')
-  })
-
   const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
 
   const [isDarkModeOn, setIsDarkModeOn] = useState<boolean>(
@@ -32,11 +27,14 @@ function App() {
   }, [isDarkModeOn])
 
   function handleThemeSwitcher() {
+    document.body.classList.contains('duration-1000')
+      ?
+      null
+      :
+      document.body.classList.add('duration-1000')
     setIsDarkModeOn(!isDarkModeOn)
     localStorage.theme = !isDarkModeOn ? "dark" : "light"
   }
-
-  console.log(isDarkModeOn)
 
   return (
     <main className="bg-zinc-300 p-4 w-[30rem] h-fit rounded dark:bg-zinc-900">
